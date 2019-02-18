@@ -1,9 +1,20 @@
 class Weather {
+    constructor (lat, long) {
+        this.apiKey = '0ba4dcbc19b2fbf104258b644a616d2b';
+        this.lat = lat;
+        this.long = long;
+    }
+
     async getWeather() {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=a12cd703b3ed57eaf26d91c5cdf4c80a`);
+        const response = await fetch(`https://api.darksky.net/forecast/0ba4dcbc19b2fbf104258b644a616d2b/37.8267,-122.4233`);
 
         const responseData = await response.json();
 
         return responseData.weather;
+    }
+
+    changeLocation(lat, long) {
+        this.lat = lat;
+        this.long = long;
     }
 }
